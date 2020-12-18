@@ -1,10 +1,10 @@
 import './App.css';
-import Kanji_list from './component/Kanji_list';
+import KanjiList from './component/KanjiList';
 
 function App() {
   return (
     <div className="App">
-      <Kanji_list />
+      <KanjiList />
     </div>
   );
 }
