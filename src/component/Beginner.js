@@ -11,7 +11,7 @@ const options = {
   };
     
 
-export default class KanjiList extends Component {
+export default class Beginner extends Component {
   state ={
       kanji_list : []
   }
@@ -27,15 +27,16 @@ export default class KanjiList extends Component {
     return (
       <main>
        {kanji_list
-        .filter((kanjiElement) => kanjiElement.kanji.strokes.count === 2) // use select strokes from 1 to 22 // beginner 1-7 // intermediate 8-14 // advanced 15-22
+        .filter((kanjiElement) => kanjiElement.kanji.strokes.count <= 8) // use select strokes from 1 to 22 // beginner 1-7 // intermediate 8-14 // advanced 15-22
         .map((kanjiElement)=>{
          return (
-           <ul key={kanjiElement.kanji.character}>
-            <li>{kanjiElement.kanji.character}</li>
-            <li>{kanjiElement.kanji.meaning.english}</li>
+            <ul className ="kanji-card" key={kanjiElement.kanji.character}>
+              <li>{kanjiElement.kanji.character}</li>
+              <li>{kanjiElement.kanji.meaning.english}</li>
               <li>{kanjiElement.examples.map(example =>example.japanese)}</li>
-            {/* // <li>{kanjiElement.kanji.examples[0].meaning.english}</li> */}
-          </ul>
+              {/* // <li>{kanjiElement.kanji.examples[0].meaning.english}</li> */}
+              
+            </ul>
          )
        })}
       </main>
