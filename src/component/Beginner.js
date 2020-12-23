@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from "axios";
+// import ReactAudioPlayer from 'react-audio-player';
 
 const options = {
     method: 'GET',
@@ -30,13 +31,22 @@ export default class Beginner extends Component {
         .filter((kanjiElement) => kanjiElement.kanji.strokes.count <= 8) // use select strokes from 1 to 22 // beginner 1-7 // intermediate 8-14 // advanced 15-22
         .map((kanjiElement)=>{
          return (
-            <ul className ="kanji-card" key={kanjiElement.kanji.character}>
-              <li>{kanjiElement.kanji.character}</li>
-              <li>{kanjiElement.kanji.meaning.english}</li>
-              <li>{kanjiElement.examples.map(example =>example.japanese)}</li>
-              {/* // <li>{kanjiElement.kanji.examples[0].meaning.english}</li> */}
-              
-            </ul>
+          <ul key={kanjiElement.kanji.character}>
+          <li>Character: {kanjiElement.kanji.character}</li>
+          <li>Onyomi: {kanjiElement.kanji.onyomi.katakana}({kanjiElement.kanji.onyomi.romaji})</li>
+          {/* onyomi meaning add */}
+          <li>Kunyomi: {kanjiElement.kanji.kunyomi.hiragana}({kanjiElement.kanji.kunyomi.romaji})</li>
+          <li>Meaning: {kanjiElement.kanji.meaning.english}</li>
+          <li>Examples: {kanjiElement.examples.map(example =>`${example.japanese} meaning:${example.meaning.english}`)}</li>
+          {/* <ReactAudioPlayer
+          src=`${kanjiElement.examples.map(example =>{example.audio.mp3})}`
+          autoPlay
+          controls
+          /> */}
+          {/*nedd to add audio, give example only 2 */}
+        </ul>
+
+       
          )
        })}
       </main>

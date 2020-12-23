@@ -30,11 +30,14 @@ export default class Intermediate extends Component {
         .filter((kanjiElement) => kanjiElement.kanji.strokes.count >=9 && kanjiElement.kanji.strokes.count < 14) // use select strokes from 1 to 22 // beginner 1-7 // intermediate 8-14 // advanced 15-22
         .map((kanjiElement)=>{
          return (
-           <ul key={kanjiElement.kanji.character}>
-            <li>{kanjiElement.kanji.character}</li>
-            <li>{kanjiElement.kanji.meaning.english}</li>
-              <li>{kanjiElement.examples.map(example =>example.japanese)}</li>
-            {/* // <li>{kanjiElement.kanji.examples[0].meaning.english}</li> */}
+          <ul key={kanjiElement.kanji.character}>
+            <li>Character: {kanjiElement.kanji.character}</li>
+            <li>Onyomi: {kanjiElement.kanji.onyomi.katakana}({kanjiElement.kanji.onyomi.romaji})</li>
+            {/* onyomi meaning add */}
+            <li>Kunyomi: {kanjiElement.kanji.kunyomi.hiragana}({kanjiElement.kanji.kunyomi.romaji})</li>
+            <li>Meaning: {kanjiElement.kanji.meaning.english}</li>
+            <li>Examples: {kanjiElement.examples.map(example =>`${example.japanese}:${example.meaning.english}`)}</li>
+            {/*nedd to add audio, give example only 2 */}
           </ul>
          )
        })}
