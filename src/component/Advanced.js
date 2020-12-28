@@ -25,18 +25,31 @@ export default class Advanced extends Component {
     const { kanji_list } = this.state;
     // console.log(kanji_list)
     return (
-      <main>
+      <main className="flex">
        {kanji_list
         .filter((kanjiElement) => kanjiElement.kanji.strokes.count >= 15) //>= 15 use select strokes from 1 to 22 // beginner 1-7 // intermediate 8-14 // advanced 15-22
         .map((kanjiElement)=>{
          return (
-           <ul key={kanjiElement.kanji.character}>
-            <li>Character: {kanjiElement.kanji.character}</li>
-            <li>Onyomi: {kanjiElement.kanji.onyomi.katakana}({kanjiElement.kanji.onyomi.romaji})</li>
+           <ul className="card" key={kanjiElement.kanji.character}>
+           <div className="kanji">
+            <div><h2>{kanjiElement.kanji.character}</h2></div>
+            <div className="kanji-content">
+            <li><strong>Onyomi:</strong> {kanjiElement.kanji.onyomi.katakana}({kanjiElement.kanji.onyomi.romaji})</li>
             {/* onyomi meaning add */}
-            <li>Kunyomi: {kanjiElement.kanji.kunyomi.hiragana}({kanjiElement.kanji.kunyomi.romaji})</li>
-            <li>Meaning: {kanjiElement.kanji.meaning.english}</li>
-            <li>Examples: {kanjiElement.examples.map(example =>`${example.japanese}:${example.meaning.english}`)}</li>
+            <li><strong>Kunyomi:</strong> {kanjiElement.kanji.kunyomi.hiragana}({kanjiElement.kanji.kunyomi.romaji})</li>
+            <li><strong>Meaning:</strong> {kanjiElement.kanji.meaning.english}</li>
+            </div>
+            </div>
+
+            <hr></hr>
+            <li><strong>Examples:</strong> {kanjiElement.examples.map(example => {return(
+              <div>
+                <li>
+                {example.japanese}
+                {example.meaning.english}
+                </li>
+              </div>
+            )})}</li>
             {/*nedd to add audio, give example only 2 */}
           </ul>
          )
