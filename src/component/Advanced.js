@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from "axios";
+import Loader from "./Loader"
 
 const options = {
     method: 'GET',
@@ -13,18 +14,22 @@ const options = {
 
 export default class Advanced extends Component {
   state ={
-      kanji_list : []
+      kanji_list : [],
+      isLoading : true
   }
 
   componentDidMount() {
       axios.request(options).then(({data}) => {
-        this.setState({kanji_list : data})
+        this.setState({kanji_list : data, isLoading:false})
       })
   }
     render() {
-    const { kanji_list } = this.state;
+    const { kanji_list, isLoading } = this.state;
+    if(isLoading) return <Loader/>;
     // console.log(kanji_list)
     return (
+      <div>
+      <h3>Advanced / 高級 </h3>
       <main className="flex">
        {kanji_list
         .filter((kanjiElement) => kanjiElement.kanji.strokes.count >= 15) //>= 15 use select strokes from 1 to 22 // beginner 1-7 // intermediate 8-14 // advanced 15-22
@@ -43,11 +48,11 @@ export default class Advanced extends Component {
 
             <hr></hr>
             <li><strong>Examples:</strong> {kanjiElement.examples.map(example => {return(
-              <div>
-                <li>
+              <div  key={example.japanese}>
+                <p>
                 {example.japanese}
                 {example.meaning.english}
-                </li>
+                </p>
               </div>
             )})}</li>
             {/*nedd to add audio, give example only 2 */}
@@ -55,6 +60,7 @@ export default class Advanced extends Component {
          )
        })}
       </main>
+      </div>
     )
   }
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from "axios";
+import Loader from "./Loader"
 
 const options = {
     method: 'GET',
@@ -13,18 +14,22 @@ const options = {
 
 export default class Intermediate extends Component {
   state ={
-      kanji_list : []
+      kanji_list : [],
+      isLoading : true
   }
 
   componentDidMount() {
       axios.request(options).then(({data}) => {
-        this.setState({kanji_list : data})
+        this.setState({kanji_list : data, isLoading : false })
       })
   }
     render() {
-    const { kanji_list } = this.state;
+    const { kanji_list, isLoading } = this.state;
+    if(isLoading) return <Loader/>;
     // console.log(kanji_list)
     return (
+      <div>
+      <h3>Intermediate / 中級 </h3>
       <main className ="flex">
        {kanji_list
         .filter((kanjiElement) => kanjiElement.kanji.strokes.count >=9 && kanjiElement.kanji.strokes.count < 14) // use select strokes from 1 to 22 // beginner 1-7 // intermediate 8-14 // advanced 15-22
@@ -38,11 +43,11 @@ export default class Intermediate extends Component {
             <li>Meaning: {kanjiElement.kanji.meaning.english}</li>
             <hr></hr>
             <li>Examples: {kanjiElement.examples.map(example => {return(
-              <div>
-                <li>
+              <div key={example.japanese}>
+                <p>
                 {example.japanese}
                 {example.meaning.english}
-                </li>
+                </p>
               </div>
             )})}</li>
             {/*nedd to add audio, give example only 2 */}
@@ -50,6 +55,7 @@ export default class Intermediate extends Component {
          )
        })}
       </main>
+      </div>
     )
   }
 }

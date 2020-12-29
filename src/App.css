@@ -1,3 +1,21 @@
+.App {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-template-columns: 100%;
+  grid-template-areas: "nav" "main" "footer";
+}
+
+.nav {
+  grid-area: nav;
+}
+.main-page {
+  grid-area: main;
+}
+.footer {
+  grid-area: footer;
+}
+
 body {
   font-size: 15px;
 }
@@ -17,26 +35,37 @@ body {
 
 li {
   list-style: none;
-  font-family: 'Kosugi Maru', sans-serif;
+  font-family: "Kosugi Maru", sans-serif;
 }
 
-h1{
-  
+h1 {
 }
 
-.main-page{
+.main-page {
   text-align: center;
+  height: 72vh;
 }
 
 h2 {
   font-size: 90px;
-  font-family: 'Sawarabi Mincho', sans-serif;
+  font-family: "Sawarabi Mincho", sans-serif;
 }
 
 .flex {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+h3 {
+  text-align: center;
+  font-size: 28px;
+  margin: 30px;
+  margin-left: 110px;
+  border: cadetblue solid 1px;
+  width: 300px;
+  padding: 10px;
+  border-radius: 20px;
 }
 
 .kanji {
@@ -52,4 +81,46 @@ h2 {
 
 .footer {
   text-align: center;
+}
+
+.loader {
+  text-align: center;
+  font-size: 1.8rem;
+  font-family: "Kosugi Maru", sans-serif;
+  margin: 200px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.navbar li {
+  font-family: "Montserrat", sans-serif;
+  padding: 5px;
+}
+
+.navbar li a {
+  font-family: "Montserrat", sans-serif;
+  padding: 15px;
+  font-size: 20px;
+}
+
+footer {
+  height: 10vh;
+  width: 100%;
+  background-color: #eee;
+  padding: 10px;
+}
+
+.footer .fa {
+  color: #78c2ad;
+  font-size: 20px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.footer .fa:hover {
+  color: rgb(243, 150, 154);
+  transition: 0.3s;
 }

@@ -16,11 +16,13 @@ export default class componentName extends Component {
                   <span className="sr-only">(current)</span>
                 </a>
               </li>
+              <li className="nav-item">
               <NavDropdown title="Kanji Level" id="basic-nav-dropdown">
-                <NavDropdown.Item >Beginner</NavDropdown.Item>
+                <NavDropdown.Item href="/beginner">Beginner</NavDropdown.Item>
                 <NavDropdown.Item href="/intermediate">Intermediate</NavDropdown.Item>
                 <NavDropdown.Item href="/advanced">Advanced</NavDropdown.Item>
               </NavDropdown>
+              </li>
               <li className="nav-item">
                 <a className="nav-link" href="/">Bookmark</a>
               </li>

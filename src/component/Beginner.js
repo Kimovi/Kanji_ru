@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from "axios";
+import Loader from "./Loader"
 // import ReactAudioPlayer from 'react-audio-player';
 
 const options = {
@@ -14,19 +15,24 @@ const options = {
 
 export default class Beginner extends Component {
   state ={
-      kanji_list : []
+      kanji_list : [],
+      isLoading : true
   }
 
   componentDidMount() {
       axios.request(options).then(({data}) => {
-        this.setState({kanji_list : data})
+        this.setState({kanji_list : data, isLoading : false})
       })
   }
     render() {
-    const { kanji_list } = this.state;
+    const { kanji_list, isLoading } = this.state;
+    if(isLoading) return <Loader/>;
     // console.log(kanji_list)
     return (
+      <div>
+      <h3>Beginner / 初級</h3>
       <main className="flex">
+        
        {kanji_list
         .filter((kanjiElement) => kanjiElement.kanji.strokes.count <= 8) // use select strokes from 1 to 22 // beginner 1-7 // intermediate 8-14 // advanced 15-22
         .map((kanjiElement)=>{
@@ -39,11 +45,11 @@ export default class Beginner extends Component {
           <li><strong>Meaning:</strong> {kanjiElement.kanji.meaning.english}</li>
           <hr></hr>
           <li><strong>Examples:</strong> {kanjiElement.examples.map(example => {return(
-            <div>
-              <li>
+            <div key={example.japanese}>
+              <p>
               {example.japanese}
               {example.meaning.english}
-              </li>
+              </p>
             </div>
           )})}</li>
           {/* <ReactAudioPlayer
@@ -58,6 +64,7 @@ export default class Beginner extends Component {
          )
        })}
       </main>
+      </div>
     )
   }
 }

@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import {BrowserRouter as Router, Link} from "react-router-dom"
+import {Link} from "react-router-dom"
 
 export default class componentName extends Component {
   render() {
     return (
-      <Router>
         <div className="main-page">
           <h1>Let's learn Japanese Kanji with us!Japanese Kanji with us!</h1>
           <p>Our Let's-learn-Japanese app has evolved!
@@ -23,7 +22,7 @@ export default class componentName extends Component {
           <button type="button" className="btn btn-primary">Advanced</button> 
           </Link>
         </div>
-      </Router>
+    
     )
   }
 }
