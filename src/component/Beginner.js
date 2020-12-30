@@ -44,23 +44,24 @@ export default class Beginner extends Component {
           <li><strong>Kunyomi:</strong> {kanjiElement.kanji.kunyomi.hiragana}({kanjiElement.kanji.kunyomi.romaji})</li>
           <li><strong>Meaning:</strong> {kanjiElement.kanji.meaning.english}</li>
           <hr></hr>
-          <li><strong>Examples:</strong> {kanjiElement.examples.map(example => {return(
+
+          <li> <strong>Examples:</strong>
+          {kanjiElement.examples.map(example => {return(
             <div key={example.japanese}>
               <p>
               {example.japanese}
               {example.meaning.english}
               </p>
-            </div>
-          )})}</li>
+              </div>
+          )})}          
+            </li>
           {/* <ReactAudioPlayer
           src=`${kanjiElement.examples.map(example =>{example.audio.mp3})}`
           autoPlay
           controls
           /> */}
           {/*nedd to add audio, give example only 2 */}
-        </ul>
-
-       
+        </ul>       
          )
        })}
       </main>

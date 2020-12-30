@@ -39,11 +39,17 @@ li {
 }
 
 h1 {
+  font-size: 50px;
 }
 
 .main-page {
   text-align: center;
   height: 72vh;
+  display: flex;
+  flex-direction: column; 
+  font-size: 20px;
+  max-width: 70%;
+  margin: auto;
 }
 
 h2 {
@@ -123,4 +129,11 @@ footer {
 .footer .fa:hover {
   color: rgb(243, 150, 154);
   transition: 0.3s;
+}
+
+.main-btn {
+  width: 300px;
+  margin-bottom: 10px;
+  font-size: 40px;
+  border-radius: 30px;
 }
