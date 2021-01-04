@@ -30,11 +30,10 @@ h1 {
 }
 
 .main-page {
-  text-align: center;
-  display: flex;
-  flex-direction: column; 
+  /* display: flex; */
+  /* flex-direction: column; */
   font-size: 20px;
-  max-width: 70%;
+  max-width: 80%;
   margin: auto;
 }
 
@@ -105,8 +104,7 @@ footer {
   text-align: center;
   background-color: #eee;
   padding: 10px;
-  position: fixed; 
-  bottom: 0; 
+  bottom: 0;
 }
 
 .footer .fa {
@@ -126,11 +124,17 @@ footer {
   margin-bottom: 10px;
   font-size: 40px;
   border-radius: 30px;
+  margin: 10px;
+  margin-bottom: 30px;
 }
 
 @media only screen and (max-width: 600px) {
-  h1{font-size: 25px;}
-  p{font-size: 12px;}
+  h1 {
+    font-size: 25px;
+  }
+  p {
+    font-size: 12px;
+  }
   .main-btn {
     height: 40px;
     width: 200px;
@@ -143,9 +147,11 @@ footer {
     height: 15px;
     padding: 0;
     line-height: 0;
-    bottom : 0;
+    bottom: 0;
   }
-  .footer .fa {font-size: 10px;}
+  .footer .fa {
+    font-size: 10px;
+  }
   h3 {
     font-size: 15px;
     margin-left: 23px;
@@ -154,7 +160,18 @@ footer {
   }
   .loader {
     font-size: 15px;
-    margin:0px;
+    margin: 0px;
     margin-top: 50px;
   }
+}
+
+.card .fa {
+  font-size: 30px;
+  color: teal;
+}
+
+.kanji-bookmark {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }

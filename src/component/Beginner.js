@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from "axios";
 import Loader from "./Loader"
-// import ReactAudioPlayer from 'react-audio-player';
+import ReactAudioPlayer from 'react-audio-player';
 
 const options = {
     method: 'GET',
@@ -34,17 +34,19 @@ export default class Beginner extends Component {
       <main className="flex">
         
        {kanji_list
-        .filter((kanjiElement) => kanjiElement.kanji.strokes.count <= 8) // use select strokes from 1 to 22 // beginner 1-7 // intermediate 8-14 // advanced 15-22
+        .filter((kanjiElement) => kanjiElement.kanji.strokes.count <= 2) // use select strokes from 1 to 22 // beginner 1-7 // intermediate 8-14 // advanced 15-22
         .map((kanjiElement)=>{
          return (
           <ul className="card" key={kanjiElement.kanji.character}>
-          <h2>{kanjiElement.kanji.character}</h2>
+            <div className="kanji-bookmark">
+              <h2>{kanjiElement.kanji.character}</h2>
+              <li><span><i class="fa fa-bookmark" aria-hidden="true"></i></span></li>
+            </div>
           <li><strong>Onyomi:</strong> {kanjiElement.kanji.onyomi.katakana}({kanjiElement.kanji.onyomi.romaji})</li>
           {/* onyomi meaning add */}
           <li><strong>Kunyomi:</strong> {kanjiElement.kanji.kunyomi.hiragana}({kanjiElement.kanji.kunyomi.romaji})</li>
           <li><strong>Meaning:</strong> {kanjiElement.kanji.meaning.english}</li>
           <hr></hr>
-
           <li> <strong>Examples:</strong>
           {kanjiElement.examples.map(example => {return(
             <div key={example.japanese}>
@@ -52,15 +54,13 @@ export default class Beginner extends Component {
               {example.japanese}
               {example.meaning.english}
               </p>
+            <ReactAudioPlayer
+            src={example.audio.opus}
+            controls
+            />
               </div>
           )})}          
             </li>
-          {/* <ReactAudioPlayer
-          src=`${kanjiElement.examples.map(example =>{example.audio.mp3})}`
-          autoPlay
-          controls
-          /> */}
-          {/*nedd to add audio, give example only 2 */}
         </ul>       
          )
        })}
