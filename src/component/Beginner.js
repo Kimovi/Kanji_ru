@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import axios from "axios";
 import Loader from "./Loader"
 import ReactAudioPlayer from 'react-audio-player';
+import Paginate from './Paginate'
+import paginationBasic from './Paginate';
 
 const options = {
     method: 'GET',
@@ -69,3 +71,4 @@ export default class Beginner extends Component {
     )
   }
 }
+

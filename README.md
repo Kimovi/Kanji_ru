@@ -1,4 +1,4 @@
-# Learn JPLT level 2 words with us!
+# Learn Japanese words with us!
 
 # Contributors
 - Serin Jeon
