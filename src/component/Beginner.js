@@ -18,7 +18,8 @@ const options = {
 export default class Beginner extends Component {
   state ={
       kanji_list : [],
-      isLoading : true
+      isLoading : true,
+      showExample : false,
   }
 
   componentDidMount() {
@@ -26,9 +27,22 @@ export default class Beginner extends Component {
         this.setState({kanji_list : data, isLoading : false})
       })
   }
+
+  toggleExampleHandler = () =>{
+    const doesShow = this.state.showExample;
+    this.setState({showExample : !doesShow})
+  }
+
     render() {
-    const { kanji_list, isLoading } = this.state;
+    const { kanji_list, isLoading, showExample } = this.state;
     if(isLoading) return <Loader/>;
+    
+    let exampleCard = null;
+
+    if(showExample){
+      exampleCard = "hello"
+    }
+
     // console.log(kanji_list)
     return (
       <div>
@@ -49,7 +63,9 @@ export default class Beginner extends Component {
           <li><strong>Kunyomi:</strong> {kanjiElement.kanji.kunyomi.hiragana}({kanjiElement.kanji.kunyomi.romaji})</li>
           <li><strong>Meaning:</strong> {kanjiElement.kanji.meaning.english}</li>
           <hr></hr>
-          <li> <strong>Examples:</strong>
+          <button onClick = {this.toggleExampleHandler}>Switch Name</button>
+          {exampleCard}
+          {/* <li> <strong>Examples:</strong>
           {kanjiElement.examples.map(example => {return(
             <div key={example.japanese}>
               <p>
@@ -62,7 +78,7 @@ export default class Beginner extends Component {
             />
               </div>
           )})}          
-            </li>
+            </li> */}
         </ul>       
          )
        })}
