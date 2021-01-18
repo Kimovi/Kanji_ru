@@ -36,12 +36,6 @@ export default class Beginner extends Component {
     render() {
     const { kanji_list, isLoading, showExample } = this.state;
     if(isLoading) return <Loader/>;
-    
-    let exampleCard = null;
-
-    if(showExample){
-      exampleCard = "hello"
-    }
 
     // console.log(kanji_list)
     return (
@@ -49,10 +43,10 @@ export default class Beginner extends Component {
       <h3>Beginner / 初級</h3>
       <main className="flex">
         
-       {kanji_list
+        {kanji_list
         .filter((kanjiElement) => kanjiElement.kanji.strokes.count <= 2) // use select strokes from 1 to 22 // beginner 1-7 // intermediate 8-14 // advanced 15-22
         .map((kanjiElement)=>{
-         return (
+          return (
           <ul className="card" key={kanjiElement.kanji.character}>
             <div className="kanji-bookmark">
               <h2>{kanjiElement.kanji.character}</h2>
@@ -63,10 +57,9 @@ export default class Beginner extends Component {
           <li><strong>Kunyomi:</strong> {kanjiElement.kanji.kunyomi.hiragana}({kanjiElement.kanji.kunyomi.romaji})</li>
           <li><strong>Meaning:</strong> {kanjiElement.kanji.meaning.english}</li>
           <hr></hr>
-          <button onClick = {this.toggleExampleHandler}>Switch Name</button>
-          {exampleCard}
-          {/* <li> <strong>Examples:</strong>
-          {kanjiElement.examples.map(example => {return(
+          <button onClick = {this.toggleExampleHandler}>Examples</button>
+          <li> <strong>Examples:</strong>
+          {kanjiElement.examples.slice(0, showExample?kanjiElement.examples.length : 2).map(example => {return(
             <div key={example.japanese}>
               <p>
               {example.japanese}
@@ -78,10 +71,10 @@ export default class Beginner extends Component {
             />
               </div>
           )})}          
-            </li> */}
+            </li>
         </ul>       
-         )
-       })}
+        )
+      })}
       </main>
       </div>
     )
