@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import axios from "axios";
 import Loader from "./Loader"
+import ReactAudioPlayer from 'react-audio-player';
+import Paginate from './Paginate'
+import paginationBasic from './Paginate';
 
 const options = {
     method: 'GET',
@@ -15,7 +18,9 @@ const options = {
 export default class Intermediate extends Component {
   state ={
       kanji_list : [],
-      isLoading : true
+      isLoading : true,
+      showExample : false,
+
   }
 
   componentDidMount() {
@@ -23,8 +28,14 @@ export default class Intermediate extends Component {
         this.setState({kanji_list : data, isLoading : false })
       })
   }
+
+  toggleExampleHandler = (e) =>{
+    const doesShow = this.state.showExample;
+    this.setState({showExample : !doesShow})
+  }
+
     render() {
-    const { kanji_list, isLoading } = this.state;
+    const { kanji_list, isLoading, showExample} = this.state;
     if(isLoading) return <Loader/>;
     // console.log(kanji_list)
     return (
@@ -42,15 +53,21 @@ export default class Intermediate extends Component {
             <li>Kunyomi: {kanjiElement.kanji.kunyomi.hiragana}({kanjiElement.kanji.kunyomi.romaji})</li>
             <li>Meaning: {kanjiElement.kanji.meaning.english}</li>
             <hr></hr>
-            <li>Examples: {kanjiElement.examples.map(example => {return(
+            <button id = {kanjiElement.references.kodansha} onClick = {this.toggleExampleHandler}>Examples</button>
+            <li> <strong>Examples:</strong>
+            {kanjiElement.examples.slice(0, showExample?kanjiElement.examples.length : 2).map(example => {return(
               <div key={example.japanese}>
                 <p>
                 {example.japanese}
                 {example.meaning.english}
                 </p>
-              </div>
-            )})}</li>
-            {/*nedd to add audio, give example only 2 */}
+              <ReactAudioPlayer
+              src={example.audio.opus}
+              controls
+              />
+                </div>
+            )})}          
+              </li>
           </ul>
          )
        })}

@@ -28,15 +28,25 @@ export default class Beginner extends Component {
       })
   }
 
-  toggleExampleHandler = () =>{
+
+  
+  toggleExampleHandler = (e) =>{
+    const tgt = e.target;
+    console.log(tgt.parentNode);
     const doesShow = this.state.showExample;
     this.setState({showExample : !doesShow})
+
+    // if(e.target.id == kanjiElement.references.kodansha){
+
+    // }
   }
+
 
     render() {
     const { kanji_list, isLoading, showExample } = this.state;
     if(isLoading) return <Loader/>;
 
+    // Key ID           {console.log(kanjiElement.references.kodansha)}
     // console.log(kanji_list)
     return (
       <div>
@@ -57,7 +67,7 @@ export default class Beginner extends Component {
           <li><strong>Kunyomi:</strong> {kanjiElement.kanji.kunyomi.hiragana}({kanjiElement.kanji.kunyomi.romaji})</li>
           <li><strong>Meaning:</strong> {kanjiElement.kanji.meaning.english}</li>
           <hr></hr>
-          <button onClick = {this.toggleExampleHandler}>Examples</button>
+          <button id = {kanjiElement.references.kodansha} onClick = {this.toggleExampleHandler}>Examples</button>
           <li> <strong>Examples:</strong>
           {kanjiElement.examples.slice(0, showExample?kanjiElement.examples.length : 2).map(example => {return(
             <div key={example.japanese}>
