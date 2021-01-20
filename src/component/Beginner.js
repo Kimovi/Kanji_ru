@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import axios from "axios";
 import Loader from "./Loader"
 import ReactAudioPlayer from 'react-audio-player';
-import Paginate from './Paginate'
-import paginationBasic from './Paginate';
 
 const options = {
     method: 'GET',
@@ -31,14 +29,11 @@ export default class Beginner extends Component {
 
   
   toggleExampleHandler = (e) =>{
-    const tgt = e.target;
-    console.log(tgt.parentNode);
+    const tgt = e.target.id;
+    console.log(tgt)
     const doesShow = this.state.showExample;
-    this.setState({showExample : !doesShow})
-
-    // if(e.target.id == kanjiElement.references.kodansha){
-
-    // }
+    return this.state.kanji_list.map(kanji => kanji.references.kodansha).filter(eachkodansha => eachkodansha !== tgt) ? console.log("true"):console.log("false")
+    // this.setState({showExample : !doesshow}) : this.setState({showExample : false}) 
   }
 
 
@@ -67,8 +62,8 @@ export default class Beginner extends Component {
           <li><strong>Kunyomi:</strong> {kanjiElement.kanji.kunyomi.hiragana}({kanjiElement.kanji.kunyomi.romaji})</li>
           <li><strong>Meaning:</strong> {kanjiElement.kanji.meaning.english}</li>
           <hr></hr>
-          <button id = {kanjiElement.references.kodansha} onClick = {this.toggleExampleHandler}>Examples</button>
           <li> <strong>Examples:</strong>
+          <button id = {kanjiElement.references.kodansha} onClick = {this.toggleExampleHandler}>More Examples</button>
           {kanjiElement.examples.slice(0, showExample?kanjiElement.examples.length : 2).map(example => {return(
             <div key={example.japanese}>
               <p>
