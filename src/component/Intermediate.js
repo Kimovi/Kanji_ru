@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import axios from "axios";
 import Loader from "./Loader"
-import ReactAudioPlayer from 'react-audio-player';
-import Paginate from './Paginate'
-import paginationBasic from './Paginate';
+import KanjiCard from "./KanjiCard"
 
 const options = {
     method: 'GET',
@@ -42,35 +40,13 @@ export default class Intermediate extends Component {
       <div>
       <h3>Intermediate / 中級 </h3>
       <main className ="flex">
-       {kanji_list
+      {kanji_list
         .filter((kanjiElement) => kanjiElement.kanji.strokes.count >=9 && kanjiElement.kanji.strokes.count < 14) // use select strokes from 1 to 22 // beginner 1-7 // intermediate 8-14 // advanced 15-22
         .map((kanjiElement)=>{
-         return (
-          <ul className="card" key={kanjiElement.kanji.character}>
-            <h2>{kanjiElement.kanji.character}</h2>
-            <li>Onyomi: {kanjiElement.kanji.onyomi.katakana}({kanjiElement.kanji.onyomi.romaji})</li>
-            {/* onyomi meaning add */}
-            <li>Kunyomi: {kanjiElement.kanji.kunyomi.hiragana}({kanjiElement.kanji.kunyomi.romaji})</li>
-            <li>Meaning: {kanjiElement.kanji.meaning.english}</li>
-            <hr></hr>
-            <button id = {kanjiElement.references.kodansha} onClick = {this.toggleExampleHandler}>Examples</button>
-            <li> <strong>Examples:</strong>
-            {kanjiElement.examples.slice(0, showExample?kanjiElement.examples.length : 2).map(example => {return(
-              <div key={example.japanese}>
-                <p>
-                {example.japanese}
-                {example.meaning.english}
-                </p>
-              <ReactAudioPlayer
-              src={example.audio.opus}
-              controls
-              />
-                </div>
-            )})}          
-              </li>
-          </ul>
-         )
-       })}
+        return (
+          <KanjiCard kanjiElement = {kanjiElement}/>
+        )
+      })}
       </main>
       </div>
     )

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from "axios";
 import Loader from "./Loader"
-import ReactAudioPlayer from 'react-audio-player';
+import KanjiCard from "./KanjiCard"
 
 const options = {
     method: 'GET',
@@ -11,73 +11,39 @@ const options = {
       'x-rapidapi-host': 'kanjialive-api.p.rapidapi.com'
     }
   };
-    
 
 export default class Beginner extends Component {
-  state ={
+    state = {
       kanji_list : [],
       isLoading : true,
       showExample : false,
-  }
+    }
 
-  componentDidMount() {
+    componentDidMount() {
       axios.request(options).then(({data}) => {
         this.setState({kanji_list : data, isLoading : false})
       })
-  }
+    }
 
-
-  
-  toggleExampleHandler = (e) =>{
-    const tgt = e.target.id;
-    console.log(tgt)
-    const doesShow = this.state.showExample;
-    return this.state.kanji_list.map(kanji => kanji.references.kodansha).filter(eachkodansha => eachkodansha !== tgt) ? console.log("true"):console.log("false")
-    // this.setState({showExample : !doesshow}) : this.setState({showExample : false}) 
-  }
-
+    toggleExampleHandler = (e) =>{
+      const tgt = e.target.id;
+      console.log(tgt)
+      const doesShow = this.state.showExample;
+      return this.state.kanji_list.map(kanji => kanji.references.kodansha).filter(eachkodansha => eachkodansha !== tgt) ? console.log("true"):console.log("false")
+    }
 
     render() {
     const { kanji_list, isLoading, showExample } = this.state;
     if(isLoading) return <Loader/>;
-
-    // Key ID           {console.log(kanjiElement.references.kodansha)}
-    // console.log(kanji_list)
     return (
       <div>
       <h3>Beginner / 初級</h3>
-      <main className="flex">
-        
+      <main className = "flex">
         {kanji_list
         .filter((kanjiElement) => kanjiElement.kanji.strokes.count <= 2) // use select strokes from 1 to 22 // beginner 1-7 // intermediate 8-14 // advanced 15-22
-        .map((kanjiElement)=>{
+        .map((kanjiElement) => {
           return (
-          <ul className="card" key={kanjiElement.kanji.character}>
-            <div className="kanji-bookmark">
-              <h2>{kanjiElement.kanji.character}</h2>
-              <li><span><i class="fa fa-bookmark" aria-hidden="true"></i></span></li>
-            </div>
-          <li><strong>Onyomi:</strong> {kanjiElement.kanji.onyomi.katakana}({kanjiElement.kanji.onyomi.romaji})</li>
-          {/* onyomi meaning add */}
-          <li><strong>Kunyomi:</strong> {kanjiElement.kanji.kunyomi.hiragana}({kanjiElement.kanji.kunyomi.romaji})</li>
-          <li><strong>Meaning:</strong> {kanjiElement.kanji.meaning.english}</li>
-          <hr></hr>
-          <li> <strong>Examples:</strong>
-          <button id = {kanjiElement.references.kodansha} onClick = {this.toggleExampleHandler}>More Examples</button>
-          {kanjiElement.examples.slice(0, showExample?kanjiElement.examples.length : 2).map(example => {return(
-            <div key={example.japanese}>
-              <p>
-              {example.japanese}
-              {example.meaning.english}
-              </p>
-            <ReactAudioPlayer
-            src={example.audio.opus}
-            controls
-            />
-              </div>
-          )})}          
-            </li>
-        </ul>       
+            <KanjiCard kanjiElement = {kanjiElement}/>
         )
       })}
       </main>
