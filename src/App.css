@@ -175,3 +175,15 @@ footer {
   justify-content: space-around;
   align-items: center;
 }
+
+
+/* #audio {
+  background-color: #78c2ad;
+  width: 30px;
+} */
+audio {
+  filter: sepia(100%) saturate(400%) grayscale(0) contrast(200%) hue-rotate(46deg) invert(12%);
+  height: 20px;
+  width: 50px;
+  display: none;
+  }

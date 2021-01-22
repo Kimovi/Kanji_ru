@@ -16,7 +16,6 @@ export default class Beginner extends Component {
     state = {
       kanji_list : [],
       isLoading : true,
-      showExample : false,
     }
 
     componentDidMount() {
@@ -25,15 +24,8 @@ export default class Beginner extends Component {
       })
     }
 
-    toggleExampleHandler = (e) =>{
-      const tgt = e.target.id;
-      console.log(tgt)
-      const doesShow = this.state.showExample;
-      return this.state.kanji_list.map(kanji => kanji.references.kodansha).filter(eachkodansha => eachkodansha !== tgt) ? console.log("true"):console.log("false")
-    }
-
     render() {
-    const { kanji_list, isLoading, showExample } = this.state;
+    const { kanji_list, isLoading } = this.state;
     if(isLoading) return <Loader/>;
     return (
       <div>

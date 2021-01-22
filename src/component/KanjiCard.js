@@ -1,9 +1,20 @@
-import React from 'react';
-import ReactAudioPlayer from 'react-audio-player';
+import React, { useState } from 'react';
+import KanjiExp from './KanjiExample';
 
-const KanjiCard = ({kanjiElement, showExample, toggleExampleHandler}) => {
+const KanjiCard = ({kanjiElement }) => {
+    const [showExample, setState] = useState(false);
+
+    const toggleExampleHandler = () =>{
+        const doesShow = this.state.showExample;
+        // return this.state.kanji_list.map(kanji => kanji.references.kodansha).filter(eachkodansha => eachkodansha !== tgt) ? console.log("true"):console.log("false")
+      }
+
     const handleClick = (clickEvent) =>{
-        toggleExampleHandler(kanjiElement.references.kodansha)
+        console.log('clicked')
+        setState(true);
+        console.log(showExample)
+        return 
+        // toggleExampleHandler(kanjiElement.references.kodansha)
     }
 
     return (
@@ -19,17 +30,8 @@ const KanjiCard = ({kanjiElement, showExample, toggleExampleHandler}) => {
             <hr></hr>
             <li> <strong>Examples:</strong>
                 <button id = {kanjiElement.references.kodansha} onClick = {handleClick}>More Examples</button>
-                {kanjiElement.examples.slice(0, showExample?kanjiElement.examples.length : 2).map(example => {return(
-                <div key={example.japanese}>
-                    <p>
-                    {example.japanese}
-                    {example.meaning.english}
-                    </p>
-                    <ReactAudioPlayer
-                    src={example.audio.opus}
-                    controls
-                    />
-                </div>
+                {kanjiElement.examples.slice(0, showExample?kanjiElement.examples.length : 1).map(example => {return(
+                    <KanjiExp example = {example}/>
                 )})}          
             </li>
             </ul>       
