@@ -17,8 +17,6 @@ export default class Intermediate extends Component {
   state ={
       kanji_list : [],
       isLoading : true,
-      showExample : false,
-
   }
 
   componentDidMount() {
@@ -26,16 +24,9 @@ export default class Intermediate extends Component {
         this.setState({kanji_list : data, isLoading : false })
       })
   }
-
-  toggleExampleHandler = (e) =>{
-    const doesShow = this.state.showExample;
-    this.setState({showExample : !doesShow})
-  }
-
     render() {
-    const { kanji_list, isLoading, showExample} = this.state;
+    const { kanji_list, isLoading } = this.state;
     if(isLoading) return <Loader/>;
-    // console.log(kanji_list)
     return (
       <div>
       <h3>Intermediate / 中級 </h3>

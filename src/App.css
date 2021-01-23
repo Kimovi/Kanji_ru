@@ -6,6 +6,11 @@
 body {
   font-size: 15px;
 }
+
+.logo {
+  width: 50px;
+}
+
 .card {
   border: 1px solid rgba(28, 75, 13, 0.185);
   box-shadow: 0 10px 10px -5px;
@@ -82,23 +87,6 @@ h3 {
   color: rgb(175, 144, 144);
 }
 
-/* .navbar li {
-  font-family: "Montserrat", sans-serif;
-  padding: 5px;
-}
-
-.navbar li a {
-  font-family: "Montserrat", sans-serif;
-  padding: 15px;
-  font-size: 20px;
-} */
-
-.navbar-brand {
-  font-size: 15px;
-  text-align: right;
-  background-color: rgba(86, 138, 90, 0.699);
-}
-
 footer {
   width: 100%;
   text-align: center;
@@ -163,6 +151,9 @@ footer {
     margin: 0px;
     margin-top: 50px;
   }
+  .card {
+    width: 285px;
+  }
 }
 
 .card .fa {
@@ -176,26 +167,36 @@ footer {
   align-items: center;
 }
 
-
-
 #audioBtn {
   border: none;
   background-color: transparent;
   font-size: 25px;
-  justify-content: center;
   height: 25px;
-}
-
-#audio-icon {
-  justify-content:space-between;
+  margin-left: 5px;
+  padding-top: 0;
+  margin-top: 0;
 }
 
 .expBtn {
-  border : none;
+  border: none;
   border-radius: 25px;
   background-color: #78c2ad;
   padding: 8px;
   color: white;
+}
 
+.kanjiExample {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  /* justify-content: center; */
+}
 
+.kanjiExample p {
+  margin-top: 3px;
+}
+
+#audio-icon:hover {
+  color: mediumaquamarine;
 }

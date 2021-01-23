@@ -17,8 +17,6 @@ export default class Advanced extends Component {
   state ={
       kanji_list : [],
       isLoading : true,
-      showExample : false,
-
   }
 
   componentDidMount() {
@@ -27,27 +25,21 @@ export default class Advanced extends Component {
       })
   }
 
-  toggleExampleHandler = (e) =>{
-    const doesShow = this.state.showExample;
-    this.setState({showExample : !doesShow})
-  }
-
-
     render() {
-      const { kanji_list, isLoading, showExample } = this.state;
+      const { kanji_list, isLoading } = this.state;
       if(isLoading) return <Loader/>;
 
     return (
       <div>
       <h3>Advanced / 高級 </h3>
       <main className="flex">
-       {kanji_list
+        {kanji_list
         .filter((kanjiElement) => kanjiElement.kanji.strokes.count >= 15) //>= 15 use select strokes from 1 to 22 // beginner 1-7 // intermediate 8-14 // advanced 15-22
         .map((kanjiElement)=>{
-         return (
-           <KanjiCard kanjiElement = {kanjiElement}/>
-         )
-       })}
+          return (
+            <KanjiCard kanjiElement = {kanjiElement}/>
+        )
+      })}
       </main>
       </div>
     )
