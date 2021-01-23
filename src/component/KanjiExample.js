@@ -1,21 +1,21 @@
-import React, { Component } from 'react'
-import ReactAudioPlayer from 'react-audio-player';
-
+import React from 'react'
 
 const KanjiExp = ({example}) => {
+        let audio = new Audio(example.audio.opus);
+        const start = () => {
+          audio.play()
+        }
+    
     return (
         <div key={example.japanese}>
         <p>
-        {example.japanese}
-        {example.meaning.english}
-        </p>
-            <button data-source="opus" data-audioid={example.audio.opus}><ion-icon name="alarm-outline"></ion-icon></button>
-            <audio source src={example.audio.opus} controls />
+            {example.japanese}
+            {example.meaning.english}
+            <button onClick={start} id="audioBtn"><ion-icon name="caret-forward-circle-outline" id="audio-icon"></ion-icon></button>
             <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
-
+        </p>
         </div>
     )
 }
 
 export default KanjiExp;
-

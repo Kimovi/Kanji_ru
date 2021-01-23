@@ -10,11 +10,8 @@ const KanjiCard = ({kanjiElement }) => {
       }
 
     const handleClick = (clickEvent) =>{
-        console.log('clicked')
         setState(true);
-        console.log(showExample)
-        return 
-        // toggleExampleHandler(kanjiElement.references.kodansha)
+        console.log('Clicked', showExample)
     }
 
     return (
@@ -28,8 +25,8 @@ const KanjiCard = ({kanjiElement }) => {
             <li><strong>Kunyomi:</strong> {kanjiElement.kanji.kunyomi.hiragana}({kanjiElement.kanji.kunyomi.romaji})</li>
             <li><strong>Meaning:</strong> {kanjiElement.kanji.meaning.english}</li>
             <hr></hr>
-            <li> <strong>Examples:</strong>
-                <button id = {kanjiElement.references.kodansha} onClick = {handleClick}>More Examples</button>
+            <li> 
+                <button className="expBtn" id = {kanjiElement.references.kodansha} onClick = {handleClick}>More Examples</button>
                 {kanjiElement.examples.slice(0, showExample?kanjiElement.examples.length : 1).map(example => {return(
                     <KanjiExp example = {example}/>
                 )})}          
