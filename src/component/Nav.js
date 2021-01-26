@@ -3,6 +3,7 @@ import NavDropdown from "react-bootstrap/NavDropdown"
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import kanjiruLogo from "./kanjiruLogo.png"
+import {Link} from "react-router-dom"
 
 export default class componentName extends Component {
   render() {
@@ -14,7 +15,7 @@ export default class componentName extends Component {
             <Nav className="mr-auto">
               <Nav.Link href="/" style={{color: "white"}}>Home</Nav.Link>
               <NavDropdown style={{color: "white"}} title="Level" id="basic-nav-dropdown" >
-                <NavDropdown.Item href="/beginner">Beginner</NavDropdown.Item>
+                <NavDropdown.Item><Link  to ="/beginner" >Beginner</Link></NavDropdown.Item>
                 <NavDropdown.Item href="/intermediate">Intermediate</NavDropdown.Item>
                 <NavDropdown.Item href="/advanced">Advanced</NavDropdown.Item> 
                 <NavDropdown.Divider />
