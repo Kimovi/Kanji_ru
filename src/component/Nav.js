@@ -9,18 +9,18 @@ export default class componentName extends Component {
   render() {
     return (
         <Navbar expand="lg" className="navbar" >
-          <Navbar.Brand href="/"><img src ={kanjiruLogo} alt ="logo" className = "logo"></img></Navbar.Brand>
+          <Navbar.Brand as ={Link} to="/"><img src ={kanjiruLogo} alt ="logo" className = "logo"></img></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
               <Nav.Link as ={Link} to="/" style={{color: "white"}}>Home</Nav.Link>
               <NavDropdown style={{color: "white"}} title="Level" id="basic-nav-dropdown" >
-                <NavDropdown.Item><Link  to ="/beginner" >Beginner</Link></NavDropdown.Item>
-                <NavDropdown.Item><Link  to ="/intermediate" >Intermediate</Link></NavDropdown.Item>
-                <NavDropdown.Item><Link  to ="/advanced" >Advanced</Link></NavDropdown.Item> 
+                <NavDropdown.Item as = {Link}  to ="/beginner">Beginner</NavDropdown.Item>
+                <NavDropdown.Item as = {Link} to ="/intermediate">Intermediate</NavDropdown.Item>
+                <NavDropdown.Item as = {Link}  to ="/advanced">Advanced</NavDropdown.Item> 
                 <NavDropdown.Divider />
               </NavDropdown>
-              <Nav.Link style={{color: "white"}}><Link  to ="/" >Bookmark</Link></Nav.Link>
+              <Nav.Link style={{color: "white"}} as ={Link} to="/">Bookmark</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
