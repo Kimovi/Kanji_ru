@@ -18,7 +18,7 @@ export default class componentName extends Component {
           <br></br>Kunyomi is the Japanese reading of the Kanji You will pronounce the word based on the pronunciation of the Japanese word.
           </p>
           <p>
-            There are three buttons that you can explore of Kanjis. Just click the below buttonsa and explore our website to learn Kanji!
+            There are three buttons that you can explore of Kanjis. Just click the below buttons and explore our website to learn Kanji!
           </p>
           
           <Link to ="/beginner" >
