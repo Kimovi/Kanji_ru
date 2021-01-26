@@ -13,14 +13,14 @@ export default class componentName extends Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="/" style={{color: "white"}}>Home</Nav.Link>
+              <Nav.Link style={{color: "white"}}><Link  to ="/" >Home</Link></Nav.Link>
               <NavDropdown style={{color: "white"}} title="Level" id="basic-nav-dropdown" >
                 <NavDropdown.Item><Link  to ="/beginner" >Beginner</Link></NavDropdown.Item>
-                <NavDropdown.Item href="/intermediate">Intermediate</NavDropdown.Item>
-                <NavDropdown.Item href="/advanced">Advanced</NavDropdown.Item> 
+                <NavDropdown.Item><Link  to ="/intermediate" >Intermediate</Link></NavDropdown.Item>
+                <NavDropdown.Item><Link  to ="/advanced" >Advanced</Link>Advanced</NavDropdown.Item> 
                 <NavDropdown.Divider />
               </NavDropdown>
-              <Nav.Link href="/" style={{color: "white"}}>Bookmark</Nav.Link>
+              <Nav.Link style={{color: "white"}}><Link  to ="/" >Bookmark</Link></Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
