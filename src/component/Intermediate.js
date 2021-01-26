@@ -35,7 +35,7 @@ export default class Intermediate extends Component {
         .filter((kanjiElement) => kanjiElement.kanji.strokes.count >=9 && kanjiElement.kanji.strokes.count < 14) // use select strokes from 1 to 22 // beginner 1-7 // intermediate 8-14 // advanced 15-22
         .map((kanjiElement)=>{
         return (
-          <KanjiCard kanjiElement = {kanjiElement}/>
+          <KanjiCard kanjiElement = {kanjiElement}  key ={kanjiElement.kanji.character}/>
         )
       })}
       </main>

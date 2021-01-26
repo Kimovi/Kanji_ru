@@ -7,7 +7,7 @@ const KanjiExp = ({example , kanji}) => {
         }
 
     return (
-        <div key = {kanji} className = "kanjiExample">
+        <div className = "kanjiExample">
                 <p>{example.japanese}
                 {example.meaning.english}</p>
                 <button onClick = {start} id = "audioBtn"><ion-icon name="caret-forward-circle-outline" id="audio-icon"></ion-icon></button>

@@ -10,7 +10,7 @@ const KanjiCard = ({kanjiElement }) => {
 
     return (
         <div>
-            <ul className="card" key={kanjiElement.references.kodansha}>
+            <ul className="card">
             <div className="kanji-bookmark">
             <h2>{kanjiElement.kanji.character}</h2>
             <li><span><i className="fa fa-bookmark" aria-hidden="true"></i></span></li>
@@ -22,7 +22,7 @@ const KanjiCard = ({kanjiElement }) => {
             <li> 
                 <button className="expBtn" id = {kanjiElement.references.kodansha} onClick = {handleClick}>More Examples</button>
                 {kanjiElement.examples.slice(0, showExample?kanjiElement.examples.length : 1).map(example => {return(
-                    <KanjiExp example = {example} kanji = {kanjiElement.references.kodansha}/>
+                    <KanjiExp example = {example} key = {kanjiElement.references.kodansha}/>
                 )})}          
             </li>
             </ul>       

@@ -32,10 +32,10 @@ export default class Beginner extends Component {
       <h3>Beginner / 初級</h3>
       <main className = "flex">
         {kanji_list
-        .filter((kanjiElement) => kanjiElement.kanji.strokes.count <= 2) // use select strokes from 1 to 22 // beginner 1-7 // intermediate 8-14 // advanced 15-22
+        .filter((kanjiElement) => kanjiElement.kanji.strokes.count <= 8) // use select strokes from 1 to 22 // beginner 1-7 // intermediate 8-14 // advanced 15-22
         .map((kanjiElement) => {
           return (
-            <KanjiCard kanjiElement = {kanjiElement}/>
+            <KanjiCard kanjiElement = {kanjiElement} key ={kanjiElement.kanji.character}/>
         )
       })}
       </main>
